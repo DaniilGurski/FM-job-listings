@@ -1,0 +1,9 @@
+@use "../abstracts/" as *;
+@use "../base/" as *; // access component-gap variable
+
+/* MAIN */
+.main {
+    &__container {
+        @include grid($gap: $component-gap, $row-gap: "true");
+    }
+}

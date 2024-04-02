@@ -1,0 +1,338 @@
+/* google fonts */
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@500..700&display=swap");
+/* 
+Box sizing rules 
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 
+Remove default margin 
+*/
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure {
+  margin: 0;
+}
+
+/* 
+Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed 
+*/
+ul[role=list],
+ol[role=list] {
+  list-style: none;
+}
+
+/* 
+Set core root defaults
+*/
+html {
+  height: 100%;
+}
+html:focus-visible {
+  scroll-behavior: smooth;
+}
+
+/* 
+Set core body defaults
+*/
+body {
+  height: 100%;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* 
+Reset default link styles
+*/
+a {
+  text-decoration: auto;
+  color: inherit;
+}
+
+/*
+Make images easier to work with 
+*/
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* 
+Inherit fonts for inputs and buttons 
+*/
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* reset default heading typography styles */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font: inherit;
+}
+
+:root {
+  --clr-primary-500: hsl(180, 29%, 50%);
+  --clr-neutral-800: hsl(180, 14%, 20%);
+  --clr-neutral-500: hsl(180, 8%, 52%);
+  --clr-neutral-200: hsl(180, 31%, 95%);
+  --clr-neutral-100: hsl(180, 52%, 96%);
+  --clr-neutral-000: hsl(0, 0%, 100%);
+  --fs-300: 1.125rem;
+  --fs-200: 1rem;
+  --fs-100: 0.9375rem;
+  --component-gap: 2rem;
+  /* double component gap on mobile devices */
+}
+@media (max-width: 57.8125em) {
+  :root {
+    --component-gap: 4rem;
+  }
+}
+
+/* general */
+body {
+  font-family: "League Spartan", sans-serif;
+  background-color: var(--clr-neutral-200);
+  font-size: var(--fs-100);
+}
+
+/* buttons */
+.tag {
+  --_tag-padding: 0.5em;
+  display: flex;
+  gap: var(--_tag-padding);
+  align-items: center;
+  font-weight: 700;
+  background-color: var(--clr-neutral-200);
+  color: var(--clr-primary-500);
+  padding-left: var(--_tag-padding);
+  border-radius: 0.25rem;
+  overflow: hidden;
+  user-select: none;
+}
+.tag:not(:has(button)) {
+  padding-inline: var(--_tag-padding);
+}
+.tag:not(:has(button)):hover {
+  background-color: var(--clr-primary-500);
+  color: var(--clr-neutral-000);
+}
+.tag__close-btn {
+  align-self: stretch;
+  background: var(--clr-primary-500);
+  border: none;
+  padding: var(--_tag-padding);
+}
+.tag__close-btn:hover {
+  background-color: var(--clr-neutral-800);
+}
+
+.button {
+  border: none;
+  cursor: pointer;
+}
+.button--secondary {
+  color: var(--clr-neutral-500);
+  background: none;
+  border: none;
+  line-height: normal;
+}
+.button--secondary:hover {
+  text-decoration: underline;
+  color: var(--clr-primary-500);
+}
+
+/* lists */
+.filter-bar {
+  padding: 1rem 2rem;
+  box-shadow: 0px 2px 20px 0px #cdd5d5;
+  background: var(--clr-neutral-000);
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+.filter-bar__filter-tags {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1rem;
+  list-style-type: none;
+  flex-wrap: wrap;
+}
+.filter-bar * {
+  line-height: normal;
+}
+
+.job-offer {
+  padding: 1rem 2rem;
+  box-shadow: 0px 2px 20px 0px #cdd5d5;
+  background: var(--clr-neutral-000);
+  border-radius: 0.5rem;
+  position: relative;
+  --_pic-size: var(--pic-size, auto);
+  /* layout change for job offer component for mobile devices */
+}
+.job-offer--new {
+  border-left: 8px solid var(--clr-primary-500);
+}
+.job-offer__content {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.job-offer__recruiter-photo {
+  width: var(--_pic-size);
+}
+.job-offer__main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.job-offer__descriptions {
+  display: grid;
+  gap: 0.5rem;
+}
+.job-offer__recruiter {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  color: var(--clr-primary-500);
+  font-weight: 700;
+}
+.job-offer__info-tag {
+  line-height: normal;
+  font-size: var(--fs-100);
+  color: var(--clr-neutral-000);
+  background-color: var(--clr-neutral-800);
+  padding: 0.4375rem;
+  border-radius: 1rem;
+}
+.job-offer__info-tag--accent {
+  background-color: var(--clr-primary-500);
+}
+.job-offer__offer-title {
+  font-weight: 700;
+  font-size: var(--fs-300);
+}
+.job-offer__additional {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1.75rem;
+  list-style-type: disc;
+  color: var(--clr-neutral-500);
+  /* remove marker from first list item of job-offer__additional */
+}
+.job-offer__additional li:nth-child(1)::marker {
+  content: "";
+}
+.job-offer__filters {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.job-offer__filters button {
+  border: none;
+}
+@media (max-width: 57.8125em) {
+  .job-offer {
+    --pic-size: 4.0625rem;
+  }
+  .job-offer__main {
+    row-gap: 1.25rem;
+    align-items: start;
+    flex-direction: column;
+    margin-top: calc(var(--pic-size) / 2.5);
+  }
+  .job-offer__descriptions {
+    width: 100%;
+    border-bottom: 1px solid var(--clr-neutral-500);
+    padding-bottom: 1rem;
+  }
+  .job-offer__recruiter-photo {
+    position: absolute;
+    top: 0;
+    transform: translateY(-50%);
+  }
+}
+
+/* HEADER */
+.header {
+  min-height: 20vh;
+  background: var(--clr-primary-500) url("/dist/img/bg-header-mobile.svg");
+  /* change header bg for desktop devices */
+}
+@media (min-width: 57.8125em) {
+  .header {
+    background: var(--clr-primary-500) url("/dist/img/bg-header-desktop.svg");
+  }
+}
+
+/* FOOTER */
+/* MAIN */
+.main__container {
+  display: grid;
+  row-gap: var(--component-gap);
+}
+
+.job-listings {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: grid;
+  row-gap: var(--component-gap);
+}
+
+/* container */
+.container {
+  width: min(75rem, 90%);
+  margin-inline: auto;
+}
+
+.none {
+  display: none;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+/* color utilities */
+/* layout utilities */
+.flex {
+  display: flex;
+  gap: var(--gap, 1rem);
+}
+
+.grid {
+  display: grid;
+  gap: var(--gap, 1rem);
+}
+/*# sourceMappingURL=style.css.map */

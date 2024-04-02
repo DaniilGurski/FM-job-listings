@@ -1,0 +1,120 @@
+@use "../abstracts/" as *;
+
+.job-offer {
+    @include frame();
+    position: relative;
+
+    --_pic-size: var(--pic-size, auto);
+
+
+    &--new {
+        // TODO: find an alternative
+        border-left: 8px solid $clr-primary-500;
+    }
+
+
+    &__content {
+        @include flex();
+        align-items: center;
+    }
+
+
+    &__recruiter-photo {
+        width: var(--_pic-size);
+    }
+
+
+    &__main {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+
+    &__descriptions {
+        @include grid(rem(8));
+    }
+
+
+    &__recruiter {
+        @include flex();
+        align-items: center;
+        color: $clr-primary-500;
+        font-weight: $fw-bold;
+    }
+
+
+    &__info-tag {
+        line-height: normal;
+        font-size: $fs-small;
+        color: $clr-neutral-000;
+        background-color: $clr-neutral-800;
+
+        padding: rem(7);
+        border-radius: 1rem;
+
+        &--accent {
+            background-color: $clr-primary-500;
+        }
+    }
+
+
+    &__offer-title {
+        font-weight: $fw-bold;
+        font-size: $fs-larger;
+    }
+
+
+    &__additional {
+        @include list($row: "true", $item-gap: rem(28));
+        list-style-type: disc;
+        color: $clr-neutral-500;
+
+        /* remove marker from first list item of job-offer__additional */
+        li:nth-child(1)::marker {
+            content: "";
+        }
+    }
+
+
+    &__filters {
+        @include flex();
+        flex-wrap: wrap;
+
+        button {
+            border:none;
+        }
+    }
+
+
+    /* layout change for job offer component for mobile devices */
+    @include mq-mobile($breakpoint) {
+        --pic-size: 4.0625rem; // 65px
+
+        &__main {
+            
+            row-gap: rem($size-4);
+            align-items: start;
+            flex-direction: column;
+            
+            margin-top: calc(var(--pic-size) / 2.5)
+        }
+        
+        
+        
+        &__descriptions {
+            width: 100%;
+            border-bottom: 1px solid $clr-neutral-500;
+            padding-bottom: 1rem;
+        }
+
+
+        &__recruiter-photo {
+            position: absolute;
+            top: 0;
+
+            transform: translateY(-50%);
+        }
+    }
+}

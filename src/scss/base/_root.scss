@@ -1,0 +1,17 @@
+@use "../abstracts/" as *;
+
+
+:root {
+    @include convert_colors();
+    @include convert_typography();
+
+    --component-gap: 2rem;
+    
+    /* double component gap on mobile devices */ 
+    @include mq-mobile($breakpoint) {
+        --component-gap: 4rem;
+    }
+}
+
+
+$component-gap: var(--component-gap); // TODO: move to sep file ?

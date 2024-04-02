@@ -1,0 +1,112 @@
+@use "colors"    as *;
+@use "typography" as *;
+@use "functions" as *;
+@use "sizes" as *;
+
+
+// Add min-width media query
+@mixin mq-desktop($breakpoint: 720) {
+    @media (min-width: em($breakpoint)) {
+        @content;
+    }
+}
+
+
+// Add max-width media query
+@mixin mq-mobile($breakpoint) {
+    @media (max-width: em($breakpoint)) {
+        @content;
+    }
+}
+
+
+// Convert color map either into css custom properties
+@mixin convert_colors() {
+    $color-map: $colors;
+
+    @each $role, $shades in $color-map {
+
+        @each $lightness, $color in $shades {
+            --clr-#{$role}-#{$lightness}: #{$color};
+        }
+    }
+}
+
+
+// Convert map with typography related values either into css custom properties 
+@mixin convert_typography() {
+    $typeography-map: $type;
+    
+    @each $key, $map in $typeography-map {
+        @if $key == "font-weight" {
+            @each $key, $value in $map {
+                --fw-#{$key}: #{$value};
+            }
+        }
+
+        @if $key == "typescale" {
+            @each $screen-size, $typescale in $map {
+                
+                @if $screen-size == "desktop" {
+                    @include mq-desktop($breakpoint: 0) {
+                        @each $scale, $value in $typescale {
+                            --fs-#{$scale}: #{$value};
+                        }
+                    }
+
+                } @else {
+                    @each $scale, $value in $typescale {
+                        --fs-#{$scale}: #{$value};
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+// Quick access to gap proprety for different situations
+@mixin flex($gap: 1rem, $row-gap: "false") {
+    display: flex;
+
+    @if $row-gap == "true" {
+        row-gap: $gap;
+    } @else {
+        gap: $gap;
+    }
+}
+
+
+@mixin grid($gap: 1rem, $row-gap: "false") {
+    display: grid;
+
+    @if $row-gap == "true" {
+        row-gap: $gap;
+    } @else {
+        gap: $gap;
+    }
+}
+
+
+// Basic list 
+@mixin list($row: "false", $item-gap: 1rem, $off-markers: "false") {
+    margin: 0;
+    padding: 0;
+
+    @if $row == "true" {
+        @include flex($item-gap);
+    }
+
+    @if $off-markers == "true" {
+        list-style-type: none;
+    }
+}
+
+
+// Project related
+@mixin frame($padding: 1rem 2rem, $box-shadow-pos: 0px 2px 20px 0px) {
+    padding: $padding;
+    box-shadow: $box-shadow-pos lighten(hsl(180, 8%, 52%), 30);
+    background: $clr-neutral-000;
+    border-radius: rem(8);
+}

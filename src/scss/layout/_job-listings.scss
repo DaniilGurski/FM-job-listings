@@ -1,0 +1,7 @@
+@use "../abstracts/" as *;
+@use "../base/" as *; // access component-gap variable
+
+.job-listings {
+    @include list($off-markers: "true");
+    @include grid($gap: $component-gap, $row-gap: "true");
+}

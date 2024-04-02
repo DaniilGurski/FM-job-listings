@@ -1,0 +1,63 @@
+@use "../abstracts/" as *;
+
+/* buttons */
+.tag {
+    --_tag-padding: 0.5em;
+    
+    display: flex;
+    gap: var(--_tag-padding);
+    align-items: center;
+    
+    font-weight: $fw-bold;
+
+    background-color: $clr-neutral-200;
+    color: $clr-primary-500;
+
+    padding-left: var(--_tag-padding);
+    border-radius: 0.25rem;
+    overflow: hidden;
+
+    user-select: none;
+    
+
+    &:not(:has(button)) {
+        padding-inline: var(--_tag-padding);
+
+        &:hover {
+            background-color: $clr-primary-500;
+            color: $clr-neutral-000;
+        }
+    }
+
+
+    &__close-btn {
+        align-self: stretch;
+        background: $clr-primary-500;
+
+        border: none;
+
+        padding: var(--_tag-padding);
+
+
+        &:hover {
+            background-color: $clr-neutral-800;
+        }
+    }
+}
+
+
+.button {
+    border: none;
+    cursor: pointer;
+    &--secondary {
+        color: $clr-neutral-500;
+        background: none;
+        border: none;
+        line-height: normal;
+
+        &:hover {
+            text-decoration: underline;
+            color: $clr-primary-500;
+        }
+    }
+}

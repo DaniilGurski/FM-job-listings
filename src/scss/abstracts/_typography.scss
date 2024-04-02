@@ -1,0 +1,26 @@
+@use "sizes" as *;
+@use "functions" as *;
+
+/* google fonts */
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@500..700&display=swap');
+
+$ff-primary: "League Spartan", sans-serif;
+$fw-medium: 500;
+$fw-bold: 700;
+
+$type: (
+    typescale: (
+        mobile: (
+            300: rem($size-3),
+            200: rem($size-2),
+            100: rem(15)
+        ),
+        desktop: (
+        )
+    )
+);
+
+$fs-larger: var(--fs-300);
+$fs-normal: var(--fs-200);
+$fs-small:  var(--fs-100);
+

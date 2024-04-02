@@ -1,0 +1,17 @@
+@use "../abstracts/" as *;
+
+.filter-bar {
+    @include frame();
+    display: flex;
+    justify-content: space-between;
+
+
+    &__filter-tags {
+        @include list($row: "true", $off-markers: "true");
+        flex-wrap: wrap;
+    }
+
+    & * {
+        line-height: normal;
+    }
+}
