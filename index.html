@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="dist/css/style.css">
 
     <!-- scripts -->
-    <script src="dist/"></script>
+    <script src="dist/script/main.min.js" defer></script>
     
     <title>Job listings </title>
 </head>
@@ -20,96 +20,52 @@
         <div class="container main__container">
             <div class="filter-bar">
                 <ul class="filter-bar__filter-tags">
-                    <li class="tag">
+                    <!-- <li class="tag">
                         Frontend
                         <button class="button tag__close-btn">
                             <span class="visually-hidden">remove tag</span>
                             <img src="dist/img/icon-remove.svg" alt="">
                         </button>
-                    </li>
-                    <li class="tag">
-                        CSS
-                        <button class="button tag__close-btn">
-                            <span class="visually-hidden">remove tag</span>
-                            <img src="dist/img/icon-remove.svg" alt="">
-                        </button>
-                    </li>
-                    <li class="tag">
-                        JavaScript
-                        <button class="button tag__close-btn">
-                            <span class="visually-hidden">remove tag</span>
-                            <img src="dist/img/icon-remove.svg" alt="">
-                        </button>
-                    </li>
+                    </li> -->
                 </ul>
                 <button class="button button--secondary">Clear</button>
             </div>
 
             <ul class="job-listings">
-                <li>
-                    <article class="job-offer job-offer--new">
-                        <div class="job-offer__content">
-                            <img class="job-offer__recruiter-photo" src="dist/img/photosnap.svg" alt="company">
-                            <div class="job-offer__main">
-                                <div class="job-offer__descriptions">
-                                    <header class="job-offer__recruiter">
-                                        Photosnap
-                                        <span class="job-offer__info-tag job-offer__info-tag--accent">NEW!</span>
-                                        <span class="job-offer__info-tag">FEATURED</span>
-                                    </header>
-                                    <a href="#" class="job-offer__offer-title">Senior Frontend Developer</a>
-                                    <footer>
-                                        <ul class="job-offer__additional">
-                                            <li>1d ago</li>
-                                            <li>Full Time</li>
-                                            <li>USA only</li>
-                                        </ul>
-                                    </footer>
-                                </div>
-                                <div class="job-offer__filters">
-                                    <button class="button tag">Frontend</button>
-                                    <button class="button tag">Senior</button>
-                                    <button class="button tag">HTML</button>
-                                    <button class="button tag">CSS</button>
-                                    <button class="button tag">JavaScript</button>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-                </li>
-                <li>
-                    <article class="job-offer job-offer--new">
-                        <div class="job-offer__content">
-                            <img class="job-offer__recruiter-photo" src="dist/img/photosnap.svg" alt="company">
-                            <div class="job-offer__main">
-                                <div class="job-offer__descriptions">
-                                    <header class="job-offer__recruiter">
-                                        Photosnap
-                                        <span class="job-offer__info-tag job-offer__info-tag--accent">NEW!</span>
-                                        <span class="job-offer__info-tag">FEATURED</span>
-                                    </header>
-                                    <a href="#" class="job-offer__offer-title">Senior Frontend Developer</a>
-                                    <footer>
-                                        <ul class="job-offer__additional">
-                                            <li>1d ago</li>
-                                            <li>Full Time</li>
-                                            <li>USA only</li>
-                                        </ul>
-                                    </footer>
-                                </div>
-                                <div class="job-offer__filters">
-                                    <button class="button tag">Frontend</button>
-                                    <button class="button tag">Senior</button>
-                                    <button class="button tag">HTML</button>
-                                    <button class="button tag">CSS</button>
-                                    <button class="button tag">JavaScript</button>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-                </li>
             </ul>
         </div>
     </main>
+
+
+    <template id="job-offer-template">
+        <li>
+            <article class="job-offer">
+                <div class="job-offer__content">
+                    <!-- logo, company -->
+                    <img class="job-offer__recruiter-photo" id="recruiter-logo" src="" alt="">
+
+                    <div class="job-offer__main">
+                        <div class="job-offer__descriptions">
+                            <!-- company, new, featured -->
+                            <p class="job-offer__recruiter" id="recruiter-top">
+                            </p>
+
+                            <!-- position -->
+                            <a href="#" class="job-offer__position" id="job-position">Senior Frontend Developer</a>
+                            <footer>
+                                <ul class="job-offer__additional" id="job-additional">
+                                    <!-- postedAt, contact, location-->
+                                </ul>
+                            </footer>
+                        </div>
+                        <ul class="job-offer__filters" id="job-tags">
+                            <!-- languages, tools -->
+                            <!-- button tag (class) -->
+                        </ul>
+                    </div>
+                </div>
+            </article>
+        </li>
+    </template>
 </body>
 </html>

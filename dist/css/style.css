@@ -186,10 +186,19 @@ body {
   border-radius: 0.5rem;
   position: relative;
   --_pic-size: var(--pic-size, auto);
+  /* new offer indicator */
   /* layout change for job offer component for mobile devices */
 }
-.job-offer--new {
-  border-left: 8px solid var(--clr-primary-500);
+.job-offer:has([data-new-offer])::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0.5rem;
+  height: 100%;
+  border-radius: 1rem 0 0 1rem;
+  background-color: var(--clr-primary-500);
+  display: block;
 }
 .job-offer__content {
   display: flex;
@@ -227,7 +236,7 @@ body {
 .job-offer__info-tag--accent {
   background-color: var(--clr-primary-500);
 }
-.job-offer__offer-title {
+.job-offer__position {
   font-weight: 700;
   font-size: var(--fs-300);
 }
@@ -246,6 +255,9 @@ body {
 .job-offer__filters {
   display: flex;
   gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
   flex-wrap: wrap;
 }
 .job-offer__filters button {

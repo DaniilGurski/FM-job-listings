@@ -7,9 +7,20 @@
     --_pic-size: var(--pic-size, auto);
 
 
-    &--new {
-        // TODO: find an alternative
-        border-left: 8px solid $clr-primary-500;
+    /* new offer indicator */
+    &:has([data-new-offer])::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: rem(8);
+        height: 100%;
+
+        border-radius: 1rem 0 0 1rem;
+
+        background-color: $clr-primary-500;
+
+        display: block;
     }
 
 
@@ -60,7 +71,7 @@
     }
 
 
-    &__offer-title {
+    &__position {
         font-weight: $fw-bold;
         font-size: $fs-larger;
     }
@@ -80,6 +91,7 @@
 
     &__filters {
         @include flex();
+        @include list($off-markers: "true");
         flex-wrap: wrap;
 
         button {
