@@ -5,10 +5,12 @@
     display: flex;
     justify-content: space-between;
 
-
+    height: min(4rem, 40vh);
+    
     &__filter-tags {
         @include list($row: "true", $off-markers: "true");
         flex-wrap: wrap;
+        overflow-y: scroll;
     }
 
     & * {

@@ -166,6 +166,7 @@ body {
   border-radius: 0.5rem;
   display: flex;
   justify-content: space-between;
+  height: min(4rem, 40vh);
 }
 .filter-bar__filter-tags {
   margin: 0;
@@ -174,6 +175,7 @@ body {
   gap: 1rem;
   list-style-type: none;
   flex-wrap: wrap;
+  overflow-y: scroll;
 }
 .filter-bar * {
   line-height: normal;
@@ -189,7 +191,7 @@ body {
   /* new offer indicator */
   /* layout change for job offer component for mobile devices */
 }
-.job-offer:has([data-new-offer])::before {
+.job-offer:has([data-featured-offer])::before {
   content: "";
   position: absolute;
   top: 0;

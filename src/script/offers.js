@@ -1,16 +1,70 @@
 const offerItemTemplate = document.getElementById("job-offer-template");
 const jobListings = document.querySelector(".job-listings");
+const clearBtn = document.querySelector("#clear-filters-btn");
+const filterList = document.querySelector(".filter-bar__filter-tags");
 
 
-// TODO: add event listener to a tag button
-// TODO: if clicked, move to filter bar 
-    // TODO: pass text of tag button 
-    // TODO: create a new list item with the passed text
-    // TODO: add close button with event listener to remove the tag from the bar
+function updateOfferList() {
+    // get tags inside filter list
+    const addedTagNames = [];
+    
+    Array.from(filterList.children).forEach((tag) => {
+        addedTagNames.push(tag.dataset.tag)
+    })
 
-function addToFilterBar() {
-    console.log("click")
+    // show all offers if no tags added
+    if (addedTagNames.length === 0) {
+        jobListings.querySelectorAll(".none").forEach((item) => {
+            item.classList.remove("none")
+        })
+
+        return
+    }
+    
+    // filter job offers by tags
+    for (let offerItem of jobListings.querySelectorAll(".job-listings > li")) {
+        const assignedTags = offerItem.dataset.tagGroup.split(" ");
+        const includesTag = assignedTags.some(tag => addedTagNames.includes(tag));
+
+        // hide offer item if no tag matches
+        offerItem.classList.toggle("none", !includesTag);
+    }
 }
+
+
+function addToFilterBar(event) {
+    const tagText = event.currentTarget.textContent;
+
+    // prevent filter tags from repeating by adding data attributes to each removableTag
+    if (filterList.querySelector(`[data-tag='${tagText}']`)) {
+        return
+    }
+
+    const removableTag = document.createElement("li");
+    removableTag.classList.add("tag");
+    removableTag.dataset.tag = tagText;
+
+    removableTag.insertAdjacentHTML("afterbegin", 
+    `
+    ${tagText}
+    <button class="button tag__close-btn">
+        <span class="visually-hidden">remove tag</span>
+        <img src="dist/img/icon-remove.svg" alt="">
+    </button>
+    `);
+
+    filterList.appendChild(removableTag);
+
+    // handle tag removal via remove button inside the element
+    const removeBtn = removableTag.querySelector("button");
+    removeBtn.addEventListener("click", () => {
+        removableTag.remove();
+        updateOfferList();
+    })
+
+    updateOfferList();
+}
+
 
 function createOfferItem(recruiterObject) {
     const newOfferItem    = offerItemTemplate.content.cloneNode(true);
@@ -38,7 +92,6 @@ function createOfferItem(recruiterObject) {
         const newTag = document.createElement("span");
         newTag.classList.add("job-offer__info-tag");
         newTag.classList.add("job-offer__info-tag--accent");
-        newTag.setAttribute("data-new-offer", "");
         newTag.textContent = "NEW!";
 
         recruiterTop.appendChild(newTag);
@@ -48,14 +101,15 @@ function createOfferItem(recruiterObject) {
         const featuredTag = document.createElement("span");
         featuredTag.classList.add("job-offer__info-tag");
         featuredTag.textContent = "FEATURED";
+        featuredTag.setAttribute("data-featured-offer", "");
 
         recruiterTop.appendChild(featuredTag);
     }
 
-    // set path to recruiter logo
+    // set image path to recruiter logo
     recruiterLogo.src = logoPath;
     
-    // inserting company name before tags if such exist.
+    // inserting company name before new and featured tags
     recruiterTop.insertAdjacentHTML("afterbegin", companyName);
 
     // set job position
@@ -70,7 +124,7 @@ function createOfferItem(recruiterObject) {
     }
 
     // set job tags / filters 
-    for (let skill of [...languages, tools]) {
+    for (let skill of [...languages, ...tools]) {
         if (skill.length === 0) {
             continue
         }
@@ -89,10 +143,23 @@ function createOfferItem(recruiterObject) {
         jobTags.appendChild(listItem);
     }
 
-
-    // adding new offer item to DOM.
+     
+    // add a new offer element to the DOM, assigning the parent element its tag names for further filter.
+    newOfferItem.firstElementChild.setAttribute("data-tag-group", [...languages, ...tools].join(" "));
     jobListings.appendChild(newOfferItem)
 }
+
+
+function clearAllFilters() {
+    while (filterList.firstChild) {
+        filterList.firstChild.remove();
+    }
+
+    updateOfferList();
+}
+
+
+clearBtn.addEventListener("click", clearAllFilters);
 
 
 fetch("/data.json")
@@ -112,6 +179,3 @@ fetch("/data.json")
     .catch(message => {
         console.error(message)
     })
-
-
-// TODO: adding tags to filter bar, displaying content with these tags. 
