@@ -4,6 +4,8 @@
 .header {
     min-height: 20vh;
     background: $clr-primary-500 url("/dist/img/bg-header-mobile.svg");
+    background-repeat: no-repeat;
+    background-position-x: center;
 
     /* change header bg for desktop devices */
     @include mq-desktop($breakpoint) {
