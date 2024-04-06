@@ -68,11 +68,11 @@ function addToFilterBar(event) {
 
 function createOfferItem(recruiterObject) {
     const newOfferItem    = offerItemTemplate.content.cloneNode(true);
-    const recruiterLogo   = newOfferItem.getElementById("recruiter-logo");      // img
-    const recruiterTop    = newOfferItem.getElementById("recruiter-top");       // p 
-    const jobPosition     = newOfferItem.getElementById("job-position");        // a
-    const jobAdditional   = newOfferItem.getElementById("job-additional");      // ul
-    const jobTags         = newOfferItem.getElementById("job-tags");            // ul
+    const recruiterLogo   = newOfferItem.querySelector(".job-offer__recruiter-photo");      // img
+    const recruiterTop    = newOfferItem.querySelector(".job-offer__recruiter");       // p 
+    const jobPosition     = newOfferItem.querySelector(".job-offer__position");        // a
+    const jobAdditional   = newOfferItem.querySelector(".job-offer__additional");      // ul
+    const jobTags         = newOfferItem.querySelector(".job-offer__filters");            // ul
 
     const {new: isNew, 
            featured: isFeatured, 
