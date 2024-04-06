@@ -82,6 +82,8 @@ function createOfferItem(recruiterObject) {
            postedAt,
            contract, 
            location,
+           role,
+           level,
            languages,
            tools
     } = recruiterObject;
@@ -124,7 +126,7 @@ function createOfferItem(recruiterObject) {
     }
 
     // set job tags / filters 
-    for (let skill of [...languages, ...tools]) {
+    for (let skill of [role, level, ...languages, ...tools]) {
         if (skill.length === 0) {
             continue
         }
@@ -145,7 +147,7 @@ function createOfferItem(recruiterObject) {
 
      
     // add a new offer element to the DOM, assigning the parent element its tag names for further filter.
-    newOfferItem.firstElementChild.setAttribute("data-tag-group", [...languages, ...tools].join(" "));
+    newOfferItem.firstElementChild.setAttribute("data-tag-group", [role, level, ...languages, ...tools].join(" "));
     jobListings.appendChild(newOfferItem)
 }
 
