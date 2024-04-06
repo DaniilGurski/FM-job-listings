@@ -19,9 +19,9 @@
     <main class="main">
         <div class="container main__container">
             <div class="filter-bar">
-                <ul class="filter-bar__filter-tags">
+                <ul class="filter-bar__filter-tags" id="filter-tags-list" aria-live="polite">
                 </ul>
-                <button class="button button--secondary" id="clear-filters-btn">Clear</button>
+                <button class="button button--secondary" id="clear-filters-btn" aria-controls="filter-tags-list" aria-label="Clear filters">Clear</button>
             </div>
 
             <ul class="job-listings">
@@ -43,14 +43,15 @@
                             </p>
 
                             <!-- position -->
-                            <a href="#" class="job-offer__position" id="job-position">Senior Frontend Developer</a>
+                            <a href="#" class="job-offer__position" id="job-position">
+                            </a>
                             <footer>
-                                <ul class="job-offer__additional" id="job-additional">
+                                <ul class="job-offer__additional" id="job-additional" aria-label="additional information about job offer">
                                     <!-- postedAt, contact, location-->
                                 </ul>
                             </footer>
                         </div>
-                        <ul class="job-offer__filters" id="job-tags">
+                        <ul class="job-offer__filters" id="job-tags" aria-label="job tags">
                             <!-- languages, tools -->
                             <!-- button tag (class) -->
                         </ul>
