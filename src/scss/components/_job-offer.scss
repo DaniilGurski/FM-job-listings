@@ -74,6 +74,11 @@
     &__position {
         font-weight: $fw-bold;
         font-size: $fs-larger;
+
+
+        &:hover {
+            color: $clr-primary-500;
+        }
     }
 
 

@@ -242,6 +242,9 @@ body {
   font-weight: 700;
   font-size: var(--fs-300);
 }
+.job-offer__position:hover {
+  color: var(--clr-primary-500);
+}
 .job-offer__additional {
   margin: 0;
   padding: 0;
