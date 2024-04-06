@@ -3,10 +3,10 @@
 /* HEADER */
 .header {
     min-height: 20vh;
-    background: $clr-primary-500 url("./dist/img/bg-header-mobile.svg");
+    background: $clr-primary-500 url("/dist/img/bg-header-mobile.svg");
 
     /* change header bg for desktop devices */
     @include mq-desktop($breakpoint) {
-        background: $clr-primary-500 url("./dist/img/bg-header-desktop.svg");
+        background: $clr-primary-500 url("/dist/img/bg-header-desktop.svg");
     }   
 }

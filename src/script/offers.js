@@ -162,7 +162,7 @@ function clearAllFilters() {
 clearBtn.addEventListener("click", clearAllFilters);
 
 
-fetch("./data.json")
+fetch("/data.json")
     .then(res => {
         if (res.ok) {
             return res.json()
