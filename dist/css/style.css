@@ -295,12 +295,16 @@ body {
   min-height: 20vh;
   background: var(--clr-primary-500) url("/dist/img/bg-header-mobile.svg");
   background-repeat: no-repeat;
-  background-position-x: center;
+  background-position: center;
+  background-size: cover;
   /* change header bg for desktop devices */
 }
 @media (min-width: 57.8125em) {
   .header {
     background: var(--clr-primary-500) url("/dist/img/bg-header-desktop.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
   }
 }
 
